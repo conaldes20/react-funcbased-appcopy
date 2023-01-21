@@ -1,17 +1,46 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from "react"
+import ReactDOM from "react-dom"
+
+//component file
+//import TodoContainer from "./components/TodoContainer"
+//ReactDOM.render(<TodoContainer />, document.getElementById("root"))
+
+//import TodoContainer from "./components/TodoContainer"
+//import { BrowserRouter as Router } from "react-router-dom"
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './react-pages';
+import About from './react-pages/about';
+import Events from './react-pages/events';
+import AnnualReport from './react-pages/annual';
+import Teams from './react-pages/team';
+import Blogs from './react-pages/blogs';
+import SignUp from './react-pages/signup';
+import NotMatch from './react-pages/NotMatch';
+import Footer from './components/Footer'
+
+//stylesheet
+//import "./App.css";
+import "./index.css";
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './components/Footer.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+      <Router>
+	<App />
+        <Switch>
+           <Route path='/' exact component={Home} />
+           <Route path='/about' component={About} />
+           <Route path='/events' component={Events} />
+           <Route path='/annual' component={AnnualReport} />
+           <Route path='/team' component={Teams} />
+           <Route path='/blogs' component={Blogs} />
+           <Route path='/sign-up' component={SignUp} />
+           <Route component={NotMatch} />
+        </Switch>
+        <Footer/>
+      </Router>
+  </React.StrictMode>,  
+  document.getElementById("root")
+)
